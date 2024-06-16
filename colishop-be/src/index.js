@@ -18,6 +18,7 @@ app.get('/', (req, res) => {
 app.use(bodyParser.json())
 
 routes(app);
+
 // Connnect MONGO_DB
 mongoose.connect(`${process.env.MONGO_DB}`)
     .then(() => {
@@ -26,9 +27,7 @@ mongoose.connect(`${process.env.MONGO_DB}`)
     .catch((err) => {
         console.log(err)
     })
-
-
-
+    
 // Console log when npm start
 app.listen(port, () => {
     console.log('Server is running in port: ' + port);

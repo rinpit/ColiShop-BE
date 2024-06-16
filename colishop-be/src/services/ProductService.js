@@ -121,13 +121,15 @@ const deleteProduct = (id) => {
 
 
 const getAllProduct = (limit, page, sort, filter) => {
-    console.log('sort', sort)
+    // console.log('sort', sort)
     return new Promise(async (resolve, reject) => {
         try {
             const totalProduct = await Product.countDocuments()
 
 
-            console.log('filter', filter)
+            // console.log('filter', filter)
+
+            
             if (filter) {
                 const objectFilter = {}
                 objectFilter[filter[0]] = filter[1]
@@ -169,7 +171,7 @@ const getAllProduct = (limit, page, sort, filter) => {
             //     })
             // }
             // Get All
-            
+
             const allProduct = await Product.find().limit(limit).skip(page * limit)
             resolve({
                 status: 'OK',
