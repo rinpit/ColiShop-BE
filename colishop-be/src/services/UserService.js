@@ -40,7 +40,7 @@ const createUser = (newUser) => {
 
 const loginUser = (userLogin) => {
   return new Promise(async (resolve, reject) => {
-    const { name, email, password, confirmPassword, phone } = userLogin;
+    const { email, password} = userLogin;
     try {
       const checkUser = await User.findOne({
         email: email,
@@ -75,6 +75,12 @@ const loginUser = (userLogin) => {
       resolve({
         status: "OK",
         message: "LOGIN_SUCCESS",
+        user: {
+          id: checkUser.id,
+          name: checkUser.name,
+          email: checkUser.email,
+          isAdmin: checkUser.isAdmin,
+        },
         access_token,
         refresh_token,
       });

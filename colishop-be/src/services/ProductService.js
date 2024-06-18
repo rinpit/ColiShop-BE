@@ -125,21 +125,15 @@ const getAllProduct = (limit, page, sort, filter) => {
     return new Promise(async (resolve, reject) => {
         try {
             const totalProduct = await Product.countDocuments()
-
-
             // console.log('filter', filter)
 
-            
             if (filter) {
                 const objectFilter = {}
                 objectFilter[filter[0]] = filter[1]
                 console.log('objectFilter', objectFilter)
 
-
-
                 const label = filter[0];
                 console.log('label', label)
-
 
                 const allObjectFilter = await Product.find({ [label]: { '$regex': filter[1] } }).limit(limit).skip(page * limit)
                 resolve({
@@ -154,7 +148,6 @@ const getAllProduct = (limit, page, sort, filter) => {
 
 
             // sort
-
             // if (sort) {
             //     console.log('okok sort')
             //     const objectSort = {}
